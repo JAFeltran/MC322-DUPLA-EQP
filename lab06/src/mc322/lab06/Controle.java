@@ -127,6 +127,7 @@ public class Controle {
 
             pontuacao -= 15;
             char componente = caverna.getComponenteNaSala(x, y);
+            heroi.getCaverna().getSala(x, y).setVisitado(true);
 
             if (componente == 'B') {
                 pontuacao -= 1000;

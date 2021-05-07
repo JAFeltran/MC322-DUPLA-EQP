@@ -6,13 +6,13 @@ public class Buraco extends Componente{
         super(x, y, 'B');
     }
 
-    public void criarBrisa()
-    {
-        /*cria brisa nas salas das posicoes:
-            (x-1, y)
-            (x+1, y)
-            (x, y+1)
-            (x, y-1)
-        */
+    public void criarBrisa() {
+        mapa.getSala(getX() - 1, getY()).setBrisa(new Brisa(getX() - 1, getY()));
+
+        mapa.getSala(getX() + 1, getY()).setBrisa(new Brisa(getX() + 1, getY()));
+
+        mapa.getSala(getX(), getY() + 1).setBrisa(new Brisa(getX(), getY() + 1));
+
+        mapa.getSala(getX(), getY() - 1).setBrisa(new Brisa(getX(), getY() - 1));
     }
 }

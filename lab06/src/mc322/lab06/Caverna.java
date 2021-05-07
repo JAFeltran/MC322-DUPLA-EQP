@@ -27,7 +27,7 @@ public class Caverna {
         for (int i = 0; i < 4; i ++) {
             System.out.print(i + 1);
             for (int j = 0; j < 4; j ++) {
-                if (salas[i][j].getVisitado() == true) {
+                if (salas[i][j].getVisitado()) {
                     char componente = salas[i][j].getComponente();
                     if ((componente == 'O') || (componente == 'B') || (componente == 'W')) {
                         System.out.print(" " + componente);

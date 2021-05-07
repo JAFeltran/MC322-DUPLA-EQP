@@ -1,22 +1,15 @@
 package mc322.lab06;
 
 public class Heroi extends Componente {
-    private boolean vivo;
     private boolean ouro;
     private int flechas;
     private boolean flechaEquipada;
 
     public Heroi(int x, int y, int flechas) {
         super(x, y, 'P');
-        vivo = true;
         ouro = false;
         this.flechas = flechas;
         flechaEquipada = false;
-    }
-
-    public void setVivo(boolean vivo)
-    {
-        this.vivo = vivo;
     }
 
     public void setOuro(boolean ouro) {
@@ -31,11 +24,6 @@ public class Heroi extends Componente {
     public void setFlechaEquipada(boolean flechaEquipada)
     {
         this.flechaEquipada = flechaEquipada;
-    }
-
-    public boolean getVivo()
-    {
-        return vivo;
     }
 
     public boolean getOuro() {

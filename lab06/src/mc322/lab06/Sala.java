@@ -40,9 +40,11 @@ public class Sala {
     public void setFedor(Componente fedor) {
         this.fedor = fedor;
     }
+
     public void setBrisa(Componente brisa) {
         this.brisa = brisa;
     }
+
     public void setVisitado(boolean visitado) {
         this.visitado = visitado;
     }

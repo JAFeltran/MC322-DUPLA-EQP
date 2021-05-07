@@ -1,10 +1,12 @@
 package mc322.lab06;
 
 public class Wumpus extends Componente {
+    // Construtor
     public Wumpus(int x, int y, Caverna mapa) {
         super(x, y, 'W', mapa);
     }
 
+    // Cria fedor nas salas adjacentes (exceto pelas diagonais) a posicao do buraco
     public void criarFedor() {
         if (getX() > 0)
             mapa.getSala(getX() - 1, getY()).setFedor(new Fedor(getX() - 1, getY(), mapa));

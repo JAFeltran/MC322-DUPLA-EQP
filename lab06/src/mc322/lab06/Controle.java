@@ -27,7 +27,7 @@ public class Controle {
         this.heroi = heroi;
     }
 
-    // Verifica se o herói está em (0, 0) com o ouro
+    // Verifica se o herói está em (0, 0) e carrega o ouro
     private void verificaVitoria() {
         if (heroi.getOuro()) {
             if ((heroi.getX() == 0) && (heroi.getY() == 0)) {
@@ -189,6 +189,7 @@ public class Controle {
         return jogando;
     }
 
+    // Imprime o mapa da caverna, assim como as informacoes do jogador e o que ele encontra na sala
     public void imprimirEstado() {
         heroi.getMapa().imprimirCaverna(heroi.getX(), heroi.getY());
         System.out.println("Player: " + nome);

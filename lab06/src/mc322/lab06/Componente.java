@@ -1,10 +1,12 @@
 package mc322.lab06;
 
 public class Componente {
+    // Atributos
     private int x, y;
     private char tipo;
     Caverna mapa;
 
+    // Construtor
     public Componente(int x, int y, char tipo, Caverna mapa) {
         this.x = x;
         this.y = y;
@@ -12,6 +14,7 @@ public class Componente {
         this.mapa = mapa;
     }
 
+    // Setters
     public void setX(int x) {
         this.x = x;
     }
@@ -23,22 +26,16 @@ public class Componente {
     public void setOuro(boolean ouro) {
     }
 
-    public void setFlechas(int flechas) {
-    }
-
     public void setFlechaEquipada(boolean flechaEquipada) {
     }
 
+    // Getters
     public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
-    }
-
-    public char getTipo() {
-        return tipo;
     }
 
     public Caverna getMapa() {
@@ -49,14 +46,11 @@ public class Componente {
         return false;
     }
 
-    public int getFlechas() {
-        return 0;
-    }
-
     public boolean getFlechaEquipada() {
         return false;
     }
 
+    // Funcoes para polimorfismo
     public void equiparFlecha() {
     }
 

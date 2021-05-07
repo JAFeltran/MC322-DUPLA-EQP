@@ -1,10 +1,12 @@
 package mc322.lab06;
 
 public class Montador {
+    // Atributos
     private int qtdBuracos, qtdWumpus, qtdOuro, qtdHeroi;
     private Heroi heroi;
     private Caverna mapa;
 
+    // Construtor
     public Montador() {
         qtdBuracos = 0;
         qtdWumpus = 0;
@@ -13,10 +15,13 @@ public class Montador {
         mapa = new Caverna();
     }
 
+    // Getters
     public Heroi getHeroi() {
         return heroi;
     }
 
+    // Preenche a caverna, seguindo as instrucoes do csv. Se as instrucoes forem validas, retorna true,
+    // caso contrario, retorna false
     public boolean montarJogo(String caminho) {
         CSVHandling csv = new CSVHandling();
         String comandos[][];

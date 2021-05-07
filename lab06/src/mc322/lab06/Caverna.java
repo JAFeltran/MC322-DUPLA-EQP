@@ -22,6 +22,9 @@ public class Caverna {
     public char getComponenteNaSala(int x, int y) {
         return salas[x][y].getComponente();
     }
+    public Sala getSala(int x, int y) {
+        return salas[x][y];
+    }
 
     // "Pega o ouro" (atualiza o estado do herói e da sala)
     public void pegarOuro(int x, int y) {
@@ -36,19 +39,12 @@ public class Caverna {
             for (int j = 0; j < 4; j ++) {
                 if (salas[i][j].getVisitado() == true) {
                     char componente = salas[i][j].getComponente();
-
-                    if (componente == 'O') {
-                        System.out.print(" O");
-                    } else if (componente == 'B') {
-                        System.out.print(" B");
-                    } else if (componente == 'W') {
-                        System.out.print(" W");
+                    if ((componente == 'O') || (componente == 'B') || (componente == 'W')) {
+                        System.out.print(" " + componente);
                     } else if ((i == heroi.getX()) && (j == heroi.getY())) {
                         System.out.print(" P");
-                    } else if (componente == 'f') {
-                        System.out.print(" f");
-                    } else if (componente == 'b') {
-                        System.out.print(" b");
+                    } else if ((componente == 'f') || (componente == 'b')) {
+                        System.out.print(" " + componente);
                     } else {
                         System.out.print(" #");
                     }

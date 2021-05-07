@@ -6,14 +6,17 @@ public class AppMundoWumpus {
         Controle controle = new Controle();
 
         Heroi heroi = montador.montar(args[0]);
-
-        controle.setHeroi(heroi);
-
-        boolean jogando = true;
-
-        while (jogando == true) {
-            jogando = controle.jogada();
-            controle.imprimirEstado();
+        if (heroi == null) {
+            System.out.println("Caverna inválida!");
+        } else {
+            controle.setHeroi(heroi);
+            
+            boolean jogando = true;
+            
+            while (jogando == true) {
+                jogando = controle.jogada();
+                controle.imprimirEstado();
+            }
         }
     }
 }

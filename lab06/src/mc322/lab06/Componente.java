@@ -24,8 +24,7 @@ public class Componente {
         this.tipo = tipo;
     }
 
-    public void setMapa(Caverna mapa)
-    {
+    public void setMapa(Caverna mapa) {
         this.mapa = mapa;
     }
 

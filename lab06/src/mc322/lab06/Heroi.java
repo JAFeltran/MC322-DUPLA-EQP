@@ -5,8 +5,8 @@ public class Heroi extends Componente {
     private int flechas;
     private boolean flechaEquipada;
 
-    public Heroi(int x, int y, int flechas) {
-        super(x, y, 'P');
+    public Heroi(int x, int y, int flechas, Caverna mapa) {
+        super(x, y, 'P', mapa);
         ouro = false;
         this.flechas = flechas;
         flechaEquipada = false;

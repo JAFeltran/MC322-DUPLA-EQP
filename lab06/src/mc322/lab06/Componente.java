@@ -5,11 +5,11 @@ public class Componente {
     private char tipo;
     Caverna mapa;
 
-    public Componente(int x, int y, char tipo) {
+    public Componente(int x, int y, char tipo, Caverna mapa) {
         this.x = x;
         this.y = y;
         this.tipo = tipo;
-        // this.mapa = mapa;
+        this.mapa = mapa;
     }
 
     public void setX(int x) {
@@ -24,6 +24,11 @@ public class Componente {
         this.tipo = tipo;
     }
 
+    public void setMapa(Caverna mapa)
+    {
+        this.mapa = mapa;
+    }
+
     public void setVivo(boolean vivo) {
     }
 
@@ -34,7 +39,6 @@ public class Componente {
     }
 
     public void setFlechaEquipada(boolean flechaEquipada) {
-
     }
 
     public int getX() {
@@ -47,6 +51,10 @@ public class Componente {
 
     public char getTipo() {
         return tipo;
+    }
+
+    public Caverna getMapa() {
+        return mapa;
     }
 
     public boolean getVivo() {
@@ -65,9 +73,12 @@ public class Componente {
         return false;
     }
 
-    public void equiparFlecha() {}
+    public void equiparFlecha() {
+    }
 
-    public void criarBrisa() {}
+    public void criarBrisa() {
+    }
 
-    public void criarFedor() {}
+    public void criarFedor() {
+    }
 }

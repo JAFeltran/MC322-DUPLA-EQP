@@ -7,6 +7,12 @@ public class Caverna {
     // Construtor
     public Caverna() {
         salas = new Sala[4][4];
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                setSala(i, j, new Sala());
+            }
+        }
     }
 
     // Setters
@@ -18,27 +24,32 @@ public class Caverna {
     public char getComponenteNaSala(int x, int y) {
         return salas[x][y].getComponente();
     }
+
     public Sala getSala(int x, int y) {
         return salas[x][y];
     }
 
     // Imprime o estado atual da caverna no console
     public void imprimirCaverna(int heroiX, int heroiY) {
-        for (int i = 0; i < 4; i ++) {
+        for (int i = 0; i < 4; i++) {
             System.out.print(i + 1);
-            for (int j = 0; j < 4; j ++) {
+            for (int j = 0; j < 4; j++) {
                 if (salas[i][j].getVisitado()) {
                     char componente = salas[i][j].getComponente();
                     if ((componente == 'O') || (componente == 'B') || (componente == 'W')) {
                         System.out.print(" " + componente);
-                    } else if ((i == heroiX) && (j == heroiY)) {
+                    }
+                    else if ((i == heroiX) && (j == heroiY)) {
                         System.out.print(" P");
-                    } else if ((componente == 'f') || (componente == 'b')) {
+                    }
+                    else if ((componente == 'f') || (componente == 'b')) {
                         System.out.print(" " + componente);
-                    } else {
+                    }
+                    else {
                         System.out.print(" #");
                     }
-                } else {
+                }
+                else {
                     System.out.print(" -");
                 }
             }

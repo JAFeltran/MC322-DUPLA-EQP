@@ -15,7 +15,7 @@ public class AppMundoWumpus {
             
             boolean jogando = true;
             
-            while (jogando == true) {
+            while (jogando) {
                 jogando = controle.jogada();
                 controle.imprimirEstado();
             }

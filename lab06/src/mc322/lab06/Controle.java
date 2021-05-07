@@ -13,11 +13,13 @@ public class Controle {
 
     // Construtor
     public Controle() {
-       teclado = new Scanner(System.in);
-       nome = teclado.nextLine();
-       pontuacao = 0;
-       jogando = true;
-       ganhou = false;
+        teclado = new Scanner(System.in);
+        System.out.print("Digite seu nome: ");
+        nome = teclado.nextLine();
+        pontuacao = 0;
+        jogando = true;
+        ganhou = false;
+        status = "O heroi entra na caverna em busca de tesouro!";
     }
 
     // Setters
@@ -27,12 +29,12 @@ public class Controle {
 
     // Verifica se o herói está em (0, 0) com o ouro
     private void verificaVitoria() {
-        if (heroi.getOuro() == true) {
+        if (heroi.getOuro()) {
             if ((heroi.getX() == 0) && (heroi.getY() == 0)) {
                 pontuacao += 1000;
                 jogando = false;
                 ganhou = true;
-                status = "Você ganhou! =D";
+                status = "O bravo herói conquistou o tesouro!\nVocê ganhou! =D";
             }
         }
     }
@@ -46,7 +48,8 @@ public class Controle {
             pontuacao -= 1100;
             jogando = false;
             status = "O Wumpus se defendeu da flecha e matou o herói!\nVocê perdeu! =(";
-        } else {
+        }
+        else {
             pontuacao += 400;
             status = "O herói matou o Wumpus!";
             caverna.getSala(x, y).setWumpus(null);
@@ -67,59 +70,73 @@ public class Controle {
 
     // Lê um comando do teclado e o executa
     public boolean jogada() {
+        System.out.print("Digite seu comando: ");
+
         String comando = teclado.nextLine();
         comando.toLowerCase();
         int x = heroi.getX(), y = heroi.getY();
-        Caverna caverna = heroi.getCaverna();
+        Caverna caverna = heroi.getMapa();
 
-        if (comando == "q") {
+        if (comando.equals("q")) {
             jogando = false;
             status = "Volte sempre!";
-        } else if (comando == "c") {
+        }
+        else if (comando.equals("c")) {
             if (caverna.getComponenteNaSala(x, y) == 'O') {
                 caverna.getSala(x, y).pegarOuro();
                 heroi.setOuro(true);
                 status = "O herói pegou o ouro!";
-            } else {
+            }
+            else {
                 status = "Não há ouro nesta sala!";
             }
-        } else if (comando == "k") {
+        }
+        else if (comando.equals("k")) {
             heroi.equiparFlecha();
-            if (heroi.getFlechaEquipada() == true) {
+            if (heroi.getFlechaEquipada()) {
                 status = "O herói equipou a flecha!";
-            } else {
+            }
+            else {
                 status = "O herói não possui mais flechas para equipar!";
             }
-        } else if ((comando == "w") || (comando == "a") || (comando == "s") || (comando == "d")) {
-            if (comando == "w") {
+        }
+        else if ((comando.equals("w")) || (comando.equals("a")) || (comando.equals("s")) || (comando.equals("d"))) {
+            if (comando.equals("w")) {
                 if (x > 0) {
                     heroi.setX(x - 1);
                     x -= 1;
-                } else {
+                }
+                else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
                     return jogando;
                 }
-            } else if (comando == "a") {
+            }
+            else if (comando.equals("a")) {
                 if (y > 0) {
                     heroi.setY(y - 1);
                     y -= 1;
-                } else {
+                }
+                else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
                     return jogando;
                 }
-            } else if (comando == "s") {
+            }
+            else if (comando.equals("s")) {
                 if (x < 3) {
                     heroi.setX(x + 1);
                     x += 1;
-                } else {
+                }
+                else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
                     return jogando;
                 }
-            } else {
+            }
+            else {
                 if (y < 3) {
                     heroi.setY(y + 1);
                     y += 1;
-                } else {
+                }
+                else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
                     return jogando;
                 }
@@ -127,46 +144,53 @@ public class Controle {
 
             pontuacao -= 15;
             char componente = caverna.getComponenteNaSala(x, y);
-            heroi.getCaverna().getSala(x, y).setVisitado(true);
+            heroi.getMapa().getSala(x, y).setVisitado(true);
 
             if (componente == 'B') {
                 pontuacao -= 1000;
                 jogando = false;
                 status = "O herói caiu em um buraco terrivelmente fundo!\nVocê perdeu! =(";
-            } else if (componente == 'O') {
+            }
+            else if (componente == 'O') {
                 status = "O herói vê uma pilha de ouro muito brilhante no centro da sala!";
-            } else if (componente == 'W') {
-                if (heroi.getFlechaEquipada() == true) {
+            }
+            else if (componente == 'W') {
+                if (heroi.getFlechaEquipada()) {
                     atacarWumpus(caverna);
-                } else {
+                }
+                else {
                     pontuacao -= 1000;
                     jogando = false;
                     status = "No cantinho da sala, estava o fedorento Wumpus, que mata o herói!\nVocê perdeu! =(";
                 }
-            } else {
-                if (heroi.getFlechaEquipada() == true) {
+            }
+            else {
+                if (heroi.getFlechaEquipada()) {
                     heroi.setFlechaEquipada(false);
                     pontuacao -= 100;
                 }
                 verificaVitoria();
-                if (ganhou == false) {
+                if (!ganhou) {
                     if (componente == 'f') {
                         status = "O herói sente um forte fedor na sala...";
-                    } else if (componente == 'b') {
+                    }
+                    else if (componente == 'b') {
                         status = "O herói sente uma brisa assustadora na sala...";
-                    } else {
+                    }
+                    else {
                         status = "O herói encontra uma sala vazia, escura, silenciosa e assustadora...";
                     }
                 }
             }
-        } else {
+        }
+        else {
             status = "O herói está confuso e não entendeu o comando...";
         }
         return jogando;
     }
 
     public void imprimirEstado() {
-        heroi.getCaverna().imprimirCaverna(heroi.getX(), heroi.getY());
+        heroi.getMapa().imprimirCaverna(heroi.getX(), heroi.getY());
         System.out.println("Player: " + nome);
         System.out.println("Score: " + pontuacao);
         System.out.println("Status: " + status);

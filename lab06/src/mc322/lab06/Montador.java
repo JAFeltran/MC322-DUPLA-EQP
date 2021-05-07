@@ -17,10 +17,6 @@ public class Montador {
         return heroi;
     }
 
-    public Caverna getMapa() {
-        return mapa;
-    }
-
     public boolean montarJogo(String caminho) {
         CSVHandling csv = new CSVHandling();
         String comandos[][];

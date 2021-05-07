@@ -7,12 +7,13 @@ public class AppMundoWumpus {
 
         boolean jogo = montador.montarJogo(args[0]);
 
-        if (jogo == false) {
+        if (!jogo) {
             System.out.println("Caverna inválida!");
         } else {
-            controle.setCaverna(montador.getCaverna());
             controle.setHeroi(montador.getHeroi());
-            
+
+            controle.imprimirEstado();
+
             boolean jogando = true;
             
             while (jogando) {

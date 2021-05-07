@@ -5,9 +5,9 @@ public class AppMundoWumpus {
         Montador montador = new Montador();
         Controle controle = new Controle();
 
-        montador.montarJogo(args[0]);
+        boolean jogo = montador.montarJogo(args[0]);
 
-        if (montador.getCaverna() == null) {
+        if (jogo == false) {
             System.out.println("Caverna inválida!");
         } else {
             controle.setCaverna(montador.getCaverna());

@@ -5,11 +5,13 @@ public class AppMundoWumpus {
         Montador montador = new Montador();
         Controle controle = new Controle();
 
-        Heroi heroi = montador.montar(args[0]);
-        if (heroi == null) {
+        montador.montarJogo(args[0]);
+
+        if (montador.getCaverna() == null) {
             System.out.println("Caverna inválida!");
         } else {
-            controle.setHeroi(heroi);
+            controle.setCaverna(montador.getCaverna());
+            controle.setHeroi(montador.getHeroi());
             
             boolean jogando = true;
             

@@ -19,16 +19,14 @@ public class Caverna {
     }
 
     // Getters
-    public Sala getSala(int x, int y) {
-        return salas[x][y];
+    public char getComponenteNaSala(int x, int y) {
+        return salas[x][y].getComponente();
     }
 
-    // Atualiza o estado do herói, se houver ouro na sala, e avisa ao jogador
-    public boolean pegarOuro(int x, int y) {
-        if (salas[x][y].pegarOuro() == true) {
-            heroi.setOuro(true);
-        }
-        return salas[x][y].pegarOuro();
+    // "Pega o ouro" (atualiza o estado do herói e da sala)
+    public void pegarOuro(int x, int y) {
+        salas[x][y].pegarOuro();
+        heroi.setOuro(true);
     }
 
     // Imprime o estado atual da caverna no console

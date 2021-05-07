@@ -70,12 +70,8 @@ public class Sala {
         return visitado;
     }
 
-    // Remove o ouro da sala, se houver, e avisa à caverna
-    public boolean pegarOuro() {
-        if (ouro != null) {
-            ouro = null;
-            return true;
-        }
-        return false;
+    // Remove o ouro da sala
+    public void pegarOuro() {
+        ouro = null;
     }
 }

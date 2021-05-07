@@ -23,6 +23,7 @@ public class Sala {
         }
         return false;
     }
+
     public boolean setOuro(Componente ouro) {
         if ((buraco == null) && (wumpus == null)) {
             this.ouro = ouro;
@@ -30,6 +31,7 @@ public class Sala {
         }
         return false;
     }
+
     public boolean setWumpus(Componente wumpus) {
         if ((buraco == null) && (ouro == null)) {
             this.wumpus = wumpus;
@@ -37,6 +39,7 @@ public class Sala {
         }
         return false;
     }
+
     public void setFedor(Componente fedor) {
         this.fedor = fedor;
     }
@@ -68,6 +71,7 @@ public class Sala {
         }
         return '-';
     }
+
     public boolean getVisitado() {
         return visitado;
     }

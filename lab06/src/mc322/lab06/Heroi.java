@@ -16,13 +16,11 @@ public class Heroi extends Componente {
         this.ouro = ouro;
     }
 
-    public void setFlechas(int flechas)
-    {
+    public void setFlechas(int flechas) {
         this.flechas = flechas;
     }
 
-    public void setFlechaEquipada(boolean flechaEquipada)
-    {
+    public void setFlechaEquipada(boolean flechaEquipada) {
         this.flechaEquipada = flechaEquipada;
     }
 
@@ -34,8 +32,7 @@ public class Heroi extends Componente {
         return flechas;
     }
 
-    public boolean getFlechaEquipada()
-    {
+    public boolean getFlechaEquipada() {
         return flechaEquipada;
     }
 

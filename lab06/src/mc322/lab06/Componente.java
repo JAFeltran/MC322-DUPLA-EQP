@@ -20,17 +20,6 @@ public class Componente {
         this.y = y;
     }
 
-    public void setTipo(char tipo) {
-        this.tipo = tipo;
-    }
-
-    public void setMapa(Caverna mapa) {
-        this.mapa = mapa;
-    }
-
-    public void setVivo(boolean vivo) {
-    }
-
     public void setOuro(boolean ouro) {
     }
 
@@ -54,10 +43,6 @@ public class Componente {
 
     public Caverna getMapa() {
         return mapa;
-    }
-
-    public boolean getVivo() {
-        return false;
     }
 
     public boolean getOuro() {

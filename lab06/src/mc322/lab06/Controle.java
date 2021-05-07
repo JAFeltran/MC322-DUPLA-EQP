@@ -7,7 +7,6 @@ public class Controle {
     // Atributos
     private String nome, status;
     private int pontuacao;
-    private Caverna caverna;
     private Heroi heroi;
     private boolean jogando, ganhou;
     private Scanner teclado;
@@ -22,9 +21,6 @@ public class Controle {
     }
 
     // Setters
-    public void setCaverna(Caverna caverna) {
-        this.caverna = caverna;
-    }
     public void setHeroi(Heroi heroi) {
         this.heroi = heroi;
     }
@@ -42,7 +38,7 @@ public class Controle {
     }
 
     // O herói tem 50% de chance de matar o Wumpus. Atualiza o estado do jogo de acordo com o resultado. 
-    private void atacarWumpus() {
+    private void atacarWumpus(Caverna caverna) {
         Random random = new Random();
         int sucesso = random.nextInt(2);
         int x = heroi.getX(), y = heroi.getY();
@@ -74,13 +70,15 @@ public class Controle {
         String comando = teclado.nextLine();
         comando.toLowerCase();
         int x = heroi.getX(), y = heroi.getY();
+        Caverna caverna = heroi.getCaverna();
 
         if (comando == "q") {
             jogando = false;
             status = "Volte sempre!";
         } else if (comando == "c") {
             if (caverna.getComponenteNaSala(x, y) == 'O') {
-                caverna.pegarOuro(x, y);
+                caverna.getSala(x, y).pegarOuro();
+                heroi.setOuro(true);
                 status = "O herói pegou o ouro!";
             } else {
                 status = "Não há ouro nesta sala!";
@@ -138,7 +136,7 @@ public class Controle {
                 status = "O herói vê uma pilha de ouro muito brilhante no centro da sala!";
             } else if (componente == 'W') {
                 if (heroi.getFlechaEquipada() == true) {
-                    atacarWumpus();
+                    atacarWumpus(caverna);
                 } else {
                     pontuacao -= 1000;
                     jogando = false;
@@ -167,7 +165,7 @@ public class Controle {
     }
 
     public void imprimirEstado() {
-        caverna.imprimirCaverna();
+        heroi.getCaverna().imprimirCaverna(heroi.getX(), heroi.getY());
         System.out.println("Player: " + nome);
         System.out.println("Score: " + pontuacao);
         System.out.println("Status: " + status);

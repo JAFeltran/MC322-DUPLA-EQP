@@ -9,6 +9,7 @@ public class Heroi extends Componente {
     // Construtor
     public Heroi(int x, int y, int flechas, Caverna mapa) {
         super(x, y, 'P', mapa);
+        super.setTipo('P');
         ouro = false;
         this.flechas = flechas;
         flechaEquipada = false;

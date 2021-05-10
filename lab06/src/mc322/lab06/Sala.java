@@ -1,83 +1,118 @@
 package mc322.lab06;
 
+import java.util.ArrayList;
+
 public class Sala {
     // Atributos
-    private Componente buraco, ouro, wumpus, fedor, brisa;
+    private ArrayList<Componente> componentes = new ArrayList<Componente>();
     private boolean visitado;
 
     // Construtor
     public Sala() {
-        buraco = null;
-        ouro = null;
-        wumpus = null;
-        fedor = null;
-        brisa = null;
         visitado = false;
     }
 
     // Setters
-    public boolean setBuraco(Componente buraco) {
-        if ((wumpus == null) && (ouro == null)) {
-            this.buraco = buraco;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean setOuro(Componente ouro) {
-        if ((buraco == null) && (wumpus == null)) {
-            this.ouro = ouro;
-            return true;
-        }
-        return false;
-    }
-
-    public boolean setWumpus(Componente wumpus) {
-        if ((buraco == null) && (ouro == null)) {
-            this.wumpus = wumpus;
-            return true;
-        }
-        return false;
-    }
-
-    public void setFedor(Componente fedor) {
-        this.fedor = fedor;
-    }
-
-    public void setBrisa(Componente brisa) {
-        this.brisa = brisa;
-    }
-
     public void setVisitado(boolean visitado) {
         this.visitado = visitado;
     }
 
     // Getters
-    public char getComponente() {
-        if (buraco != null) {
-            return 'B';
-        }
-        if (ouro != null) {
-            return 'O';
-        }
-        if (wumpus != null) {
-            return 'W';
-        }
-        if (fedor != null) {
-            return 'f';
-        }
-        if (brisa != null) {
-            return 'b';
-        }
-        return '-';
-    }
-
     public boolean getVisitado() {
         return visitado;
     }
 
+    public Componente getComponente() {
+        if (componentes.isEmpty()) {
+            return null;
+        }
+        return componentes.get(0);
+    }
+
+    public Componente getComponenteSecundario() {
+        if (componentes.isEmpty() || componentes.size() == 1) {
+            return null;
+        }
+        return componentes.get(1);
+    }
+
+    // Adiciona o componente recebido à sala
+    public boolean adicionarComponente(Componente componente) {
+        if (componentes.isEmpty()) {
+            componentes.add(componente);
+            return true;
+        }
+
+        char tipoComponente = componente.getTipo();
+        char tipoComponente0 = componentes.get(0).getTipo();
+        
+        if (tipoComponente == 'O') {
+            if ((tipoComponente0 != 'B') && (tipoComponente0 != 'W')) {
+                componentes.add(0, componente);
+                return true;
+            }
+            return false;
+        } else if (tipoComponente == 'W') {
+            if ((tipoComponente0 != 'O') && (tipoComponente0 != 'B')) {
+                componentes.add(0, componente);
+                return true;
+            }
+            return false;
+        } else if (tipoComponente == 'B') {
+            if ((tipoComponente0 != 'O') && (tipoComponente0 != 'W')) {
+                componentes.add(0, componente);
+                return true;
+            }
+            return false;
+        } else if (tipoComponente == 'P') {
+            if ((tipoComponente0 == 'O') || (tipoComponente0 == 'W') || (tipoComponente0 == 'B')) {
+                componentes.add(1, componente);
+            } else {
+                componentes.add(0, componente);
+            }
+            return true;
+        } else if (tipoComponente == 'f') {
+            for (int i = 0; i < componentes.size(); i ++) {
+                if (componentes.get(i).getTipo() == 'b') {
+                    componentes.add(i, componente);
+                    return true;
+                }
+            }
+        }
+        componentes.add(componente);
+        return true;
+    }
+
     // Remove o ouro da sala
-    public void pegarOuro() {
-        ouro = null;
+    public void removerOuro() {
+        if (componentes.get(0).getTipo() == 'O') {
+            componentes.remove(0);
+        }
+    }
+
+    // Remove o Herói da sala
+    public Componente removerHeroi() {
+        for (int i = 0; i < componentes.size(); i ++) {
+            if (componentes.get(i).getTipo() == 'P') {
+                return componentes.remove(i);
+            }
+        }
+        return null;
+    }
+
+    // Remove o Wumpus da sala
+    public void removerWumpus() {
+        if (componentes.get(0).getTipo() == 'W') {
+            componentes.remove(0);
+        }
+    }
+
+    // Remove o fedor da sala
+    public void removerFedor() {
+        for (int i = 0; i < componentes.size(); i ++) {
+            if (componentes.get(i).getTipo() == 'f') {
+                componentes.remove(i);
+            }
+        }
     }
 }

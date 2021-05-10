@@ -23,6 +23,10 @@ public class Componente {
         this.y = y;
     }
 
+    public void setTipo(char tipo) {
+        this.tipo = tipo;
+    }
+
     public void setOuro(boolean ouro) {
     }
 
@@ -38,6 +42,10 @@ public class Componente {
         return y;
     }
 
+    public char getTipo() {
+        return tipo;
+    }
+
     public Caverna getMapa() {
         return mapa;
     }
@@ -50,7 +58,7 @@ public class Componente {
         return false;
     }
 
-    // Funcoes para polimorfismo
+    // Métodos para polimorfismo
     public void equiparFlecha() {
     }
 

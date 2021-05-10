@@ -41,7 +41,22 @@ public class Montador {
                 if (i == 0 && j == 0 && qtdHeroi == 0) {
                     qtdHeroi++;
                     heroi = new Heroi(i, j, 1, mapa);
+                    Componente componenteHeroi = new Heroi(i, j, 1, mapa);
+                    
                     mapa.getSala(i, j).setVisitado(true);
+                    mapa.getSala(i, j).adicionarComponente(componenteHeroi);
+                }
+                else {
+                    return false;
+                }
+            }
+            else if (representacao.equals("O")) {
+                if (qtdOuro == 0) {
+                    Componente ouro = new Ouro(i, j, mapa);
+
+                    qtdOuro++;
+
+                    mapa.getSala(i, j).adicionarComponente(ouro);
                 }
                 else {
                     return false;
@@ -53,7 +68,7 @@ public class Montador {
 
                     qtdWumpus++;
 
-                    mapa.getSala(i, j).setWumpus(wumpus);
+                    mapa.getSala(i, j).adicionarComponente(wumpus);
 
                     wumpus.criarFedor();
                 }
@@ -67,21 +82,9 @@ public class Montador {
 
                     qtdBuracos++;
 
-                    mapa.getSala(i, j).setBuraco(buraco);
+                    mapa.getSala(i, j).adicionarComponente(buraco);
 
                     buraco.criarBrisa();
-                }
-                else {
-                    return false;
-                }
-            }
-            else if (representacao.equals("O")) {
-                if (qtdOuro == 0) {
-                    Componente ouro = new Ouro(i, j, mapa);
-
-                    qtdOuro++;
-
-                    mapa.getSala(i, j).setOuro(ouro);
                 }
                 else {
                     return false;

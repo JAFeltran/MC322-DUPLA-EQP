@@ -22,7 +22,19 @@ public class Caverna {
 
     // Getters
     public char getComponenteNaSala(int x, int y) {
-        return salas[x][y].getComponente();
+        Componente componente = salas[x][y].getComponente();
+        if (componente == null) {
+            return '#';
+        }
+        return componente.getTipo();
+    }
+
+    public char getComponenteSecundarioNaSala(int x, int y) {
+        Componente componente = salas[x][y].getComponenteSecundario();
+        if (componente == null) {
+            return '#';
+        }
+        return componente.getTipo();
     }
 
     public Sala getSala(int x, int y) {
@@ -30,24 +42,12 @@ public class Caverna {
     }
 
     // Imprime o estado atual da caverna no console
-    public void imprimirCaverna(int heroiX, int heroiY) {
+    public void imprimirCaverna() {
         for (int i = 0; i < 4; i++) {
             System.out.print(i + 1);
             for (int j = 0; j < 4; j++) {
                 if (salas[i][j].getVisitado()) {
-                    char componente = salas[i][j].getComponente();
-                    if ((componente == 'O') || (componente == 'B') || (componente == 'W')) {
-                        System.out.print(" " + componente);
-                    }
-                    else if ((i == heroiX) && (j == heroiY)) {
-                        System.out.print(" P");
-                    }
-                    else if ((componente == 'f') || (componente == 'b')) {
-                        System.out.print(" " + componente);
-                    }
-                    else {
-                        System.out.print(" #");
-                    }
+                    System.out.print(" " + getComponenteNaSala(i, j));
                 }
                 else {
                     System.out.print(" -");

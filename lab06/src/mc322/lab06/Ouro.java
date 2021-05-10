@@ -4,5 +4,6 @@ public class Ouro extends Componente {
     // Construtor
     public Ouro(int x, int y, Caverna mapa) {
         super(x, y, 'O', mapa);
+        super.setTipo('O');
     }
 }

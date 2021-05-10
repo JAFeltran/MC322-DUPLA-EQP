@@ -19,7 +19,7 @@ public class Controle {
         pontuacao = 0;
         jogando = true;
         ganhou = false;
-        status = "O heroi entra na caverna em busca de tesouro!";
+        status = "O Herói entra na caverna em busca de tesouro!";
     }
 
     // Setters
@@ -52,18 +52,18 @@ public class Controle {
         else {
             pontuacao += 400;
             status = "O herói matou o Wumpus!";
-            caverna.getSala(x, y).setWumpus(null);
+            caverna.getSala(x, y).removerWumpus();
             if (x > 0) {
-                caverna.getSala(x - 1, y).setFedor(null);
+                caverna.getSala(x - 1, y).removerFedor();
             }
             if (x < 3) {
-                caverna.getSala(x + 1, y).setFedor(null);
+                caverna.getSala(x + 1, y).removerFedor();
             }
             if (y > 0) {
-                caverna.getSala(x, y - 1).setFedor(null);
+                caverna.getSala(x, y - 1).removerFedor();
             }
             if (y < 3) {
-                caverna.getSala(x, y + 1).setFedor(null);
+                caverna.getSala(x, y + 1).removerFedor();
             }
         }
     }
@@ -79,11 +79,11 @@ public class Controle {
 
         if (comando.equals("q")) {
             jogando = false;
-            status = "Volte sempre!";
+            status = "O herói fica muito assustado e desiste da busca pelo ouro!\nVolte sempre!";
         }
         else if (comando.equals("c")) {
             if (caverna.getComponenteNaSala(x, y) == 'O') {
-                caverna.getSala(x, y).pegarOuro();
+                caverna.getSala(x, y).removerOuro();
                 heroi.setOuro(true);
                 status = "O herói pegou o ouro!";
             }
@@ -103,8 +103,11 @@ public class Controle {
         else if ((comando.equals("w")) || (comando.equals("a")) || (comando.equals("s")) || (comando.equals("d"))) {
             if (comando.equals("w")) {
                 if (x > 0) {
+                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setX(x - 1);
+                    componenteHeroi.setX(x - 1);
                     x -= 1;
+                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -113,8 +116,11 @@ public class Controle {
             }
             else if (comando.equals("a")) {
                 if (y > 0) {
+                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setY(y - 1);
+                    componenteHeroi.setY(y - 1);
                     y -= 1;
+                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -123,8 +129,11 @@ public class Controle {
             }
             else if (comando.equals("s")) {
                 if (x < 3) {
+                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setX(x + 1);
+                    componenteHeroi.setX(x + 1);
                     x += 1;
+                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -133,8 +142,11 @@ public class Controle {
             }
             else {
                 if (y < 3) {
+                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setY(y + 1);
+                    componenteHeroi.setY(y + 1);
                     y += 1;
+                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -171,6 +183,7 @@ public class Controle {
                 }
                 verificaVitoria();
                 if (!ganhou) {
+                    componente = caverna.getComponenteSecundarioNaSala(x, y);
                     if (componente == 'f') {
                         status = "O herói sente um forte fedor na sala...";
                     }
@@ -191,7 +204,7 @@ public class Controle {
 
     // Imprime o mapa da caverna, assim como as informacoes do jogador e o que ele encontra na sala
     public void imprimirEstado() {
-        heroi.getMapa().imprimirCaverna(heroi.getX(), heroi.getY());
+        heroi.getMapa().imprimirCaverna();
         System.out.println("Player: " + nome);
         System.out.println("Score: " + pontuacao);
         System.out.println("Status: " + status);

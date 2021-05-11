@@ -7,7 +7,7 @@ public class Controle {
     // Atributos
     private String nome, status;
     private int pontuacao;
-    private Heroi heroi;
+    private Componente heroi;
     private boolean jogando, ganhou;
     private Scanner teclado;
 
@@ -103,11 +103,10 @@ public class Controle {
         else if ((comando.equals("w")) || (comando.equals("a")) || (comando.equals("s")) || (comando.equals("d"))) {
             if (comando.equals("w")) {
                 if (x > 0) {
-                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
+                    heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setX(x - 1);
-                    componenteHeroi.setX(x - 1);
                     x -= 1;
-                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
+                    heroi.mapa.getSala(x, y).adicionarComponente(heroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -116,11 +115,10 @@ public class Controle {
             }
             else if (comando.equals("a")) {
                 if (y > 0) {
-                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
+                    heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setY(y - 1);
-                    componenteHeroi.setY(y - 1);
                     y -= 1;
-                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
+                    heroi.mapa.getSala(x, y).adicionarComponente(heroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -129,11 +127,10 @@ public class Controle {
             }
             else if (comando.equals("s")) {
                 if (x < 3) {
-                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
+                    heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setX(x + 1);
-                    componenteHeroi.setX(x + 1);
                     x += 1;
-                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
+                    heroi.mapa.getSala(x, y).adicionarComponente(heroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";
@@ -142,11 +139,10 @@ public class Controle {
             }
             else {
                 if (y < 3) {
-                    Componente componenteHeroi = heroi.mapa.getSala(x, y).removerHeroi();
+                    heroi.mapa.getSala(x, y).removerHeroi();
                     heroi.setY(y + 1);
-                    componenteHeroi.setY(y + 1);
                     y += 1;
-                    heroi.mapa.getSala(x, y).adicionarComponente(componenteHeroi);
+                    heroi.mapa.getSala(x, y).adicionarComponente(heroi);
                 }
                 else {
                     status = "O herói tenta atravessar uma parede, mas não consegue...";

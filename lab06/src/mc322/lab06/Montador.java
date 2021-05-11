@@ -41,10 +41,9 @@ public class Montador {
                 if (i == 0 && j == 0 && qtdHeroi == 0) {
                     qtdHeroi++;
                     heroi = new Heroi(i, j, 1, mapa);
-                    Componente componenteHeroi = new Heroi(i, j, 1, mapa);
                     
                     mapa.getSala(i, j).setVisitado(true);
-                    mapa.getSala(i, j).adicionarComponente(componenteHeroi);
+                    mapa.getSala(i, j).adicionarComponente(heroi);
                 }
                 else {
                     return false;

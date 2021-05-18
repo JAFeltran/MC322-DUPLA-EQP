@@ -12,3 +12,31 @@ Wumpus, "O" o ouro e "_" uma sala vazia. Para jogar, devem-se usar os comandos a
 * q -> O usuário sai do jogo
 
 [Os arquivos java estão aqui!](src/mc322/lab06)
+
+# Destaques de Arquitetura
+
+## Delegação e Possibilidade de Expansão
+
+~~~java
+public class Heroi extends Componente {
+    // Atributos
+    private boolean ouro;
+    private int flechas;
+    private boolean flechaEquipada;
+    
+    ...
+    
+    public void equiparFlecha() {
+        if (flechas > 0) {
+            flechaEquipada = true;
+            flechas--;
+        }
+    }
+}
+~~~
+
+No trecho de código acima, é possível ver que o próprio objeto da classe "Heroi" é responsável por gerenciar suas consistência interna. Isso fica evidente
+pelos atributos da classe, que guardam se o herói carrega ouro, quantas flechas não equipadas ele possui, e se possui alguma flecha equipada. Além disso, o
+método "equiparFlecha" atualiza o estado do objeto caso o comando seja usado. Dessa forma, outras classes e objetos não precisam alterar os atributos do heroi,
+diminuindo sua interdependência. Além disso, a possibilidade de possuir mais de uma flecha equipada permite que a arquitetura seja facilmente expandível, caso
+haja o desejo de alterar as regras do jogo.

@@ -38,7 +38,7 @@ Conseguirá o herói cumprir sua missão? Isso depende somente de você...
 
 ## Vídeos
 
-[![Vídeo da prévia](https://drive.google.com/file/d/1fNiH6WHw9WeIZ8TiT2sGn5EmhdlRi1Ol/view?usp=sharing)](https://drive.google.com/file/d/1uszDQPCGeER__hJ6rSXI5SbTS8QNMBl6/view?usp=sharing)
+[Vídeo da prévia](https://drive.google.com/file/d/1uszDQPCGeER__hJ6rSXI5SbTS8QNMBl6/view?usp=sharing)
 
 ## Slides
 

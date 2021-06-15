@@ -1,6 +1,6 @@
 package src.Mapa;
 
-import Ator.IAtor;
+import src.Ator.IAtor;
 
 public class Mapa implements IMapa {
     // Atributos
@@ -20,5 +20,3 @@ public class Mapa implements IMapa {
         return mapa[x][y];
     }
 }
-
-// TODO -> IAtor

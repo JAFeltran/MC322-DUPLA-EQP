@@ -1,11 +1,14 @@
 package src.Controle;
 
 import src.Ator.IHeroi;
+import src.Ator.ICombate;
+import src.Janela.janelaCombate;
 
 public class Controle implements IControle {
     // Atributos
     private int fase, pontuacao;
     private IHeroi heroi;
+    // Referencia pro view??????????????????????????????????????????????????????
 
     // Construtor
     public Controle() {
@@ -13,7 +16,7 @@ public class Controle implements IControle {
         pontuacao = 0;
     }
 
-    // IControlePropriedades
+    // IControle
     public void setHeroi(IHeroi heroi) {
         this.heroi = heroi;
     }
@@ -26,19 +29,28 @@ public class Controle implements IControle {
         return heroi.getVivo();
     }
 
-    // Batalha
-    private void batalha(int x, int y) {
-        iCombate inimigo = heroi.getInimigo(x, y);
-
-    }
-
-    // IControle
     public void jogada(int x, int y) {
-        heroi.verificaMovimento(x, y);
+        char movimento = heroi.verificarMovimento(x, y);
 
-        // if () {
-        //     batalha(x, y);
-        // }
+        switch (movimento) {
+            case 'i':
+                ICombate inimigo = heroi.getInimigo(x, y);
+                new janelaCombate(heroi, inimigo);
 
+                if (heroi.getVivo) {
+                    heroi.mover(x, y);
+                }
+
+                break;
+            case 'o':
+                // avisa que não dá pra mover
+                break;
+            case 't':
+                // avisa que o herói entrou no território do chefão
+                break;
+            case 'v':
+                heroi.mover(x, y);
+                break;
+        }
     } 
 }

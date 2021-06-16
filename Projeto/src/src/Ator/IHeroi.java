@@ -1,14 +1,8 @@
 package src.Ator;
 
-public interface IHeroi extends IAtor, ICombate {
+import src.Mapa.IMapa;
+
+public interface IHeroi extends IAtor, ICombate, IAcao {
     // Setters
     public void setItemInventario(int posicao, int valor, String nome);
-    public void removerInimigo(int x, int y);
-
-    // Getters
-    public IAtor getInimigoNaPosicao(int x, int y);
-
-    // Movimento
-    public char verificarMovimento(int x, int y);
-    public void mover(int x, int y);
 }

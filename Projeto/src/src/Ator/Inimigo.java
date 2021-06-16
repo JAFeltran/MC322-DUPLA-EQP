@@ -14,6 +14,14 @@ public class Inimigo extends Ator implements ICombate {
     }
 
     // ICombate
+    public boolean getVivo() {
+        if (vida > 0) {
+            return true;
+        }
+
+        return false;
+    }
+
     public int causarDano() {
         Random random = new Random();
         int acerto = random.nextInt(2);
@@ -21,7 +29,8 @@ public class Inimigo extends Ator implements ICombate {
     }
 
     public void receberDano(int dano) {
-        if (dano > 0) { ;
+        if (dano > 0) {
+            ;
             vida -= dano - defesa;
         }
     }

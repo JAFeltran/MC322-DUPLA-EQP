@@ -6,22 +6,11 @@ import src.Janela.janelaCombate;
 
 public class Controle implements IControle {
     // Atributos
-    private int pontuacao;
     private IHeroi heroi;
-    // Referencia pro view ?????????????????????????????????????????????????????
-
-    // Construtor
-    public Controle() {
-        pontuacao = 0;
-    }
 
     // IControle
     public void setHeroi(IHeroi heroi) {
         this.heroi = heroi;
-    }
-
-    public int getPontuacao() {
-        return pontuacao;
     }
 
     public boolean getVivo() {

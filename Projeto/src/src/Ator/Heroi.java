@@ -5,7 +5,7 @@ import src.Item.*;
 
 public class Heroi extends Ator implements IHeroi {
     // Atributos
-    private Item inventario[];
+    private IItem inventario[];
     // inventario tem 5 itens, cada um representando um dos atributos (na seguinte ordem):
     // ataque, defesa, visao, chave.
     private int vida;
@@ -18,7 +18,7 @@ public class Heroi extends Ator implements IHeroi {
         vida = 300;
         vivo = true;
         this.mapa = mapa;
-        inventario = new Item[4];
+        inventario = new IItem[4];
 
         inventario[0] = new Item(100, "Desarmado");
         inventario[1] = new Item(100, "Pelado");

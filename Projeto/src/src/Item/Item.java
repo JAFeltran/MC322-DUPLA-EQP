@@ -1,6 +1,6 @@
 package src.Item;
 
-public class Item {
+public class Item implements IItem {
     private int valor;
     private String nome;
 

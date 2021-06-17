@@ -1,7 +1,7 @@
 package src.Controle;
 
 import src.Ator.*;
-import src.Janela.janelaCombate;
+import src.Painel.painelBatalha;
 
 public class Controle implements IControle {
     // Atributos
@@ -22,7 +22,7 @@ public class Controle implements IControle {
         switch (movimento) {
             case 'i':
                 IAtor inimigo = heroi.getInimigoNaPosicao(x, y);
-                new janelaCombate(heroi, inimigo);
+                new painelBatalha(heroi, inimigo);
 
                 if (heroi.getVivo()) {
                     // heroi.pegarItem(); ??????????????????????????????????????

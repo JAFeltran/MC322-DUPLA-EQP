@@ -1,7 +1,10 @@
 package src.Controle;
 
+import javax.swing.JOptionPane;
+import javax.swing.JFrame;
+
 import src.Ator.*;
-import src.Painel.painelBatalha;
+import src.Painel.PainelBatalha;
 
 public class Controle implements IControle {
     // Atributos
@@ -21,8 +24,8 @@ public class Controle implements IControle {
 
         switch (movimento) {
             case 'i':
-                IAtor inimigo = heroi.getInimigoNaPosicao(x, y);
-                new painelBatalha(heroi, inimigo);
+                ICombate inimigo = (ICombate)heroi.getInimigoNaPosicao(x, y);
+                new PainelBatalha(heroi, inimigo);
 
                 if (heroi.getVivo()) {
                     // heroi.pegarItem(); ??????????????????????????????????????
@@ -31,10 +34,10 @@ public class Controle implements IControle {
 
                 break;
             case 'o':
-                // avisa que não dá pra mover
+                JOptionPane.showMessageDialog(new JFrame(), "Você não pode se mover para lá!", "Aviso", JOptionPane.WARNING_MESSAGE);
                 break;
             case 't':
-                // avisa que o herói entrou no território do chefão
+                JOptionPane.showMessageDialog(new JFrame(), "O Herói sente que um grande mal se aproxima...", "Aviso", JOptionPane.WARNING_MESSAGE);
                 break;
             case 'v':
                 heroi.mover(x, y);
